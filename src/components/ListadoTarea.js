@@ -25,10 +25,11 @@ const ListadoTarea = ({ arrayTareas, correoUsuario, setArrayTareas }) => {
                 return(
                     <>
                     <Row>
-                        <Col>{objetoTarea.descripcion}</Col>
-                    <Col>
-                        <Button variant="secondary"> Ver Archivo </Button>
-                    </Col>
+                        <Col>
+                            {objetoTarea.descripcion}
+                        </Col>
+                    
+                   
                     <Col>
                         <Button 
                         variant="danger"
@@ -44,3 +45,6 @@ const ListadoTarea = ({ arrayTareas, correoUsuario, setArrayTareas }) => {
     );
 }
 export default ListadoTarea;
+// <Col>
+//<Button variant="secondary"> Ver Archivo </Button>
+//</Col>

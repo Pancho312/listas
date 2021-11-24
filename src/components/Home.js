@@ -4,7 +4,7 @@ import firebaseApp from "../credenciales";
 import { getAuth, signOut} from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Badge } from "react-bootstrap";
 
 import AgregarTarea from "./AgregarTarea";
 import ListadoTarea from "./ListadoTarea";
@@ -50,8 +50,9 @@ const Home = ({correoUsuario}) => {
 
     return (
     <Container>
-        <h1>Hola, Sesion Iniciada</h1>
-        <Button onClick={()=> signOut(auth)} >Cerrar Sesion </Button>
+        
+        <h2>Bienvenido</h2>
+        
         <hr/>
         <AgregarTarea
             arrayTareas={arrayTareas}
@@ -67,6 +68,11 @@ const Home = ({correoUsuario}) => {
         correoUsuario = {correoUsuario} />
         : null
 }
+
+        <Button
+            variant="success" 
+            onClick={()=> signOut(auth)} >Cerrar Sesion 
+        </Button>
     </Container> 
     );
 }

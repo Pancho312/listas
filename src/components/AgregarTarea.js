@@ -37,9 +37,7 @@ const AgregarTarea = ({ correoUsuario, setArrayTareas, arrayTareas }) => {
                 <Col>
                     <Form.Control type="text" placeholder="Describe tu tarea " id= "formDescripcion"/>
                 </Col>
-                <Col>
-                    <Form.Control type="file" placeholder="añade archivo"/>
-                </Col>
+                
                 <Col>
                     <Button type="submit">Agregar Tarea</Button>
                 </Col>
@@ -50,3 +48,9 @@ const AgregarTarea = ({ correoUsuario, setArrayTareas, arrayTareas }) => {
     );
 }
 export default AgregarTarea;
+
+// por si queremos ingresar una imagen
+/*      <Col>
+            <Form.Control type="file" placeholder="añade archivo"/>
+        </Col>
+*/

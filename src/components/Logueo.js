@@ -54,7 +54,7 @@ const Logueo = () => {
             </Form>
 
             <Button 
-                variant="primary" 
+                variant="success" 
                 type="submit" 
                 style={{width:"300px"}}
                 onClick= {() => signInWithRedirect(auth, googleProvider)}
@@ -64,7 +64,7 @@ const Logueo = () => {
 
             <Button
             style={{width: "300px"}}
-             variant="primary" onClick= {() => setEstaRegistrandose(!estaRegistrandose)}>
+             variant="secondary" onClick= {() => setEstaRegistrandose(!estaRegistrandose)}>
                 {estaRegistrandose ? "¿Ya tienes cuenta? Inicia Secion" : "¿No tienes Cuenta? Registrate!"}
             </Button>
 
