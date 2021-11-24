@@ -1,9 +1,16 @@
 import React, {useState} from 'react';
-import{ Stack, container, Form, Button } from "react-bootstrap";
+import{ Stack, Container, Form, Button} from "react-bootstrap";
 
 import firebaseApp from "../credenciales";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { 
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signInWithRedirect,
+    GoogleAuthProvider,
+} from "firebase/auth";
 const auth = getAuth(firebaseApp);
+const googleProvider = new GoogleAuthProvider();
 
 const Logueo = () => {
     const [estaRegistrandose, setEstaRegistrandose] = useState(false);
@@ -12,13 +19,21 @@ const Logueo = () => {
         e.preventDefault();
         const correo = e.target.formBasicEmail.value;
         const contra = e.target.formBasicPassword.value;
-        /*console.log(correo, contra);*/
-        const usuario = await createUserWithEmailAndPassword(auth, correo, contra);
-        console.log(usuario);
-
+        if(estaRegistrandose){
+            //si se registra
+            const usuario = await createUserWithEmailAndPassword(
+                auth,
+                correo,
+                contra);
+        }
+        else {
+            // si quiere iniciar secion
+            signInWithEmailAndPassword(auth, correo, contra);
+        }
     }
     return (
-    <container>
+    <Container>
+        
         <Stack gap={3}>
         <h1>  {estaRegistrandose ? "Registrate" : "Inicia Secion"}</h1>
         <Form onSubmit={submitHandler}>
@@ -38,7 +53,12 @@ const Logueo = () => {
             </Button>
             </Form>
 
-            <Button variant="primary" type="submit" style={{width:"300px"}}>
+            <Button 
+                variant="primary" 
+                type="submit" 
+                style={{width:"300px"}}
+                onClick= {() => signInWithRedirect(auth, googleProvider)}
+                >
                 Acceder con Google
             </Button>
 
@@ -49,7 +69,8 @@ const Logueo = () => {
             </Button>
 
         </Stack>
-    </container>
+        
+    </Container>
     );
 };
 export default Logueo;
