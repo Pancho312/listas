@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import{ Stack, Container, Form, Button} from "react-bootstrap";
+import{ Stack, Container, Form, Button, Col, Row} from "react-bootstrap";
+
+import "../../src/components/stilos.css"
 
 import firebaseApp from "../credenciales";
 import { 
@@ -32,13 +34,18 @@ const Logueo = () => {
         }
     }
     return (
-    <Container>
-        
+
+    <Container  className="reg">
+    <Row>
+        <Col >
+            
         <Stack gap={3}>
         <h1>  {estaRegistrandose ? "Registrate" : "Inicia Secion"}</h1>
-        <Form onSubmit={submitHandler}>
+        <Form  onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
+                
                 <Form.Label>Ingrese su Correo Electronico</Form.Label>
+
                 <Form.Control type="email" placeholder="Ingrese su Correo" />
                 
             </Form.Group>
@@ -55,7 +62,7 @@ const Logueo = () => {
 
             <Button 
                 variant="success" 
-                type="submit" 
+               // type="submit" 
                 style={{width:"300px"}}
                 onClick= {() => signInWithRedirect(auth, googleProvider)}
                 >
@@ -69,8 +76,10 @@ const Logueo = () => {
             </Button>
 
         </Stack>
-        
+        </Col>
+        </Row>
     </Container>
+        
     );
 };
 export default Logueo;
